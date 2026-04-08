@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Persona</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="app-shell">
+    <main class="layout">
+        <section class="panel panel--hero">
+            <div class="panel__eyebrow">Registro central</div>
+            <h1>Registro de personal</h1>
+            <p class="panel__lede">
+                Guarda la informacion esencial de cada persona en una interfaz clara, elegante y lista para administrarse.
+            </p>
+            <div class="hero-actions">
+                <a href="{{ url_for('administrar') }}" class="button button--ghost">Administrar registros</a>
+            </div>
+        </section>
+
+        <section class="panel panel--form">
+            {% if mensaje_confirmacion %}
+            <div class="alert alert--success">
+                {{ mensaje_confirmacion }}
+            </div>
+            {% endif %}
+
+            <form action="{{ url_for('registrar') }}" method="post" class="form-grid">
+                <div class="form-group">
+                    <label for="dni">DNI</label>
+                    <input type="text" id="dni" name="dni" placeholder="Ingresa el documento" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Direccion completa">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" id="telefono" name="telefono" placeholder="Telefono de contacto">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="button button--primary">Registrar persona</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

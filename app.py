@@ -40,7 +40,8 @@ def obtener_registros():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    mensaje_confirmacion = request.args.get('mensaje_confirmacion')
+    return render_template('index.html', mensaje_confirmacion=mensaje_confirmacion)
 
 @app.route('/registrar', methods=['POST'])
 def registrar():
